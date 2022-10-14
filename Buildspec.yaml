@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+  pre_build:
+     commands:
+       - AWS_REGION=us-east-1
+       - aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin 215987658031.dkr.ecr.${AWS_REGION}.amazon.com
+       - ashokrepo=$215987658031.dkr.ecr.${AWS_REGION}.amazon.com
+  build:
+    commands:
+      - docker build -f src/docker -t $ashokrepo
+artifacts:
+  files:
+    - '**/*'
