@@ -16,3 +16,12 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: docker login
+      uses: docker/login-actions@v3
+      with:
+        username: ashok2421
+        password: Ashokraus1@
+    - name: tagdockerimage
+      run: docker my-image-name:$(date +%s) ashok2421/maven-web-application:$(date +%s)
+    - name: docker push
+      run: docker image push ashok2421/maven-web-application:$(date +%s)
