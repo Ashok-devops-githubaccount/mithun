@@ -17,7 +17,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
     - name: docker login
-      uses: docker/login-actions@v2
+      uses: docker/ashok@v2
       with:
         username: ashok2421
         password: dckr_pat_nrzCH5qs8jTNj2Pfp2iU0I3_9J8
